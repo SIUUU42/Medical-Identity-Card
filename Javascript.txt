@@ -1,0 +1,57 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const topics = {
+        "Chronic Pain": "Chronic pain is persistent pain lasting longer than 3 months. It can result from conditions like arthritis or nerve damage.",
+        "Cough": "A cough is a reflex action to clear the airways. It can be caused by infections, allergies, or chronic conditions.",
+        "Digestive Problems": "Common digestive issues include acid reflux, bloating, and constipation. Proper diet and hydration help prevent these problems.",
+        "Eye Health": "Maintaining eye health includes regular check-ups, a balanced diet, and reducing screen time to avoid strain.",
+        "Irritable Bowel Syndrome (IBS)": "IBS is a common disorder affecting the digestive system, causing bloating, diarrhea, or constipation.",
+        "Lung Cancer": "Lung cancer is a severe disease caused by smoking, pollution, and genetic factors. Early detection improves treatment outcomes.",
+        "Nutrition And Healthy Eating": "A balanced diet ensures proper body function, boosting immunity and overall well-being.",
+        "Pain Management": "Managing pain involves medication, physical therapy, and lifestyle changes. Chronic pain may require specialized treatment.",
+        "Skin Problems And Treatments": "Skin issues like acne and eczema can be treated with proper skincare and medical intervention.",
+        "Vitamins And Supplements": "Vitamins and minerals support bodily functions. A well-balanced diet reduces the need for supplements."
+    };
+
+    const buttons = document.querySelectorAll(".topic-btn");
+    const modal = document.getElementById("topicModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const closeModal = document.querySelector(".close");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            const topic = this.getAttribute("data-topic");
+            modalTitle.innerText = topic;
+            modalDescription.innerText = topics[topic] || "No information available.";
+            modal.style.display = "flex";
+        });
+    });
+
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+
+
+document.querySelector(".login-btn").addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("loginModal").style.display = "flex";
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+    document.getElementById("loginModal").style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+    if (event.target === document.getElementById("loginModal")) {
+        document.getElementById("loginModal").style.display = "none";
+    }
+});
+
