@@ -55,3 +55,259 @@ window.addEventListener("click", function (event) {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const topics = {
+        "Chronic Pain": "Chronic pain is persistent pain lasting longer than 3 months. It can result from conditions like arthritis or nerve damage.",
+        "Cough": "A cough is a reflex action to clear the airways. It can be caused by infections, allergies, or chronic conditions.",
+        "Digestive Problems": "Common digestive issues include acid reflux, bloating, and constipation. Proper diet and hydration help prevent these problems.",
+        "Eye Health": "Maintaining eye health includes regular check-ups, a balanced diet, and reducing screen time to avoid strain.",
+        "Irritable Bowel Syndrome (IBS)": "IBS is a common disorder affecting the digestive system, causing bloating, diarrhea, or constipation.",
+        "Lung Cancer": "Lung cancer is a severe disease caused by smoking, pollution, and genetic factors. Early detection improves treatment outcomes.",
+        "Nutrition And Healthy Eating": "A balanced diet ensures proper body function, boosting immunity and overall well-being.",
+        "Pain Management": "Managing pain involves medication, physical therapy, and lifestyle changes. Chronic pain may require specialized treatment.",
+        "Skin Problems And Treatments": "Skin issues like acne and eczema can be treated with proper skincare and medical intervention.",
+        "Vitamins And Supplements": "Vitamins and minerals support bodily functions. A well-balanced diet reduces the need for supplements."
+    };
+
+    const buttons = document.querySelectorAll(".topic-btn");
+    const modal = document.getElementById("topicModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const closeModal = document.querySelector(".close");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            const topic = this.getAttribute("data-topic");
+            modalTitle.innerText = topic;
+            modalDescription.innerText = topics[topic] || "No information available.";
+            modal.style.display = "flex";
+        });
+    });
+
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+
+
+document.querySelector(".login-btn").addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("loginModal").style.display = "flex";
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+    document.getElementById("loginModal").style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+    if (event.target === document.getElementById("loginModal")) {
+        document.getElementById("loginModal").style.display = "none";
+    }
+});
+
+
+function openBlankDocument() {
+    // Create a new blank document in a new tab
+    let newWindow = window.open('', '_blank');
+
+    // Write basic HTML structure with A4-sized styling
+    newWindow.document.write(`
+        <html>
+        <head>
+            <title>Medical Appointment History</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 20px;
+                    margin: 0;
+                    width: 210mm;
+                    height: 297mm;
+                    border: 1px solid #000;
+                    box-sizing: border-box;
+                }
+                h1 {
+                    text-align: center;
+                    margin-top: 50px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Medical Appointment History</h1>
+            <p>This is a blank A4 document for recording medical appointment history.</p>
+        </body>
+        </html>
+    `);
+
+    newWindow.document.close();
+}
+
+
+function openMedicalDocuments() {
+    // Create a new blank document in a new tab
+    let newWindow = window.open('', '_blank');
+
+    // Write basic HTML structure with a table for medical records
+    newWindow.document.write(`
+        <html>
+        <head>
+            <title>My Medical Documents</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 20px;
+                    margin: 0;
+                    width: 210mm;
+                    height: 297mm;
+                    border: 1px solid #000;
+                    box-sizing: border-box;
+                }
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 10px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>My Medical Documents</h1>
+            <table>
+                <tr>
+                    <th>Medical Record</th>
+                    <th>Date</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>Corona Vaccination</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fever Injection</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Allergy Test</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Blood Pressure Report</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Diabetes Test</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </body>
+        </html>
+    `);
+
+    newWindow.document.close();
+}
+
+function openAppointmentForm() {
+    // Create a new blank document in a new tab
+    let newWindow = window.open('', '_blank');
+
+    // Write basic HTML structure with a form
+    newWindow.document.write(`
+        <html>
+        <head>
+            <title>New Appointment</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 20px;
+                    margin: 0;
+                    width: 210mm;
+                    height: 297mm;
+                    border: 1px solid #000;
+                    box-sizing: border-box;
+                }
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                form {
+                    max-width: 500px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                label {
+                    font-weight: bold;
+                }
+                input, textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    margin-bottom: 15px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+                button {
+                    background-color: #0077b6;
+                    color: white;
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                button:hover {
+                    background-color: #005f8a;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Add New Appointment</h1>
+            <form>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="doctor">Doctor's Name:</label>
+                <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name" required>
+
+                <label for="hospital">Hospital/Clinic:</label>
+                <input type="text" id="hospital" name="hospital" placeholder="Enter hospital name" required>
+
+                <label for="prescription">Prescription:</label>
+                <textarea id="prescription" name="prescription" placeholder="Enter prescription details"></textarea>
+
+                <label for="nextVisit">Next Visit Date:</label>
+                <input type="date" id="nextVisit" name="nextVisit">
+
+                <button type="submit">Save Appointment</button>
+            </form>
+        </body>
+        </html>
+    `);
+
+    newWindow.document.close();
+}
