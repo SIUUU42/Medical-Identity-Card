@@ -1,36 +1,34 @@
-require('dotenv').config({ path: './.env' });
-console.log("Environment variables loaded:", process.env);
-
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const path = require('path');
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-
-// Import Routes
-const authRoutes = require("./routes/auth");
-const medicalHistoryRoutes = require("./routes/medicalHistory"); // Import medical history routes
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static frontend files
+
+// Linking the backend to the front end
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Frontend.html'));
+    res.sendFile(path.join(__dirname, 'public', 'Frontend.html'));
 });
 
+// Example of the API Endpoint
+app.post('/data', (req, res) => {
+    const { name, email } = req.body;
 
-app.use(express.json());
-app.use(cors());
+    if (!name || !email) {
+        return res.status(400).json({ error: 'Name and email are required' });
+    }
 
-// 🔹 MongoDB Database Connection Setup
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("✅ Connected to MongoDB Atlas"))
-.catch(err => console.error("❌ MongoDB connection error", err));
+    res.json({ message: 'Data received successfully', data: { name, email } });
+});
 
-// Use Routes for authentication
-app.use("/api/auth", authRoutes);
-app.use("/api/medical-history", medicalHistoryRoutes); // Use medical history routes
-
-// 🚀 Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// Starting the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
