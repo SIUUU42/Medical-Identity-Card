@@ -16,7 +16,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Conditions</a></li>
+                <li><a href="#">Add New Appointment</a></li>
                 <li><a href="#">Drugs & Supplements</a></li>
                 <li><a href="#">Well-Being</a></li>
                 <li><a href="#">Symptom Checker</a></li>
@@ -95,3 +95,30 @@
 
 </body>
 </html>
+
+<!-- Trending Topics Section -->
+<section class="trending-topics">
+    <h2 class="section-title">TRENDING TOPICS</h2>
+    <div class="topics-container">
+        <button class="topic-btn" data-topic="Chronic Pain">Chronic Pain</button>
+        <button class="topic-btn" data-topic="Cough">Cough</button>
+        <button class="topic-btn" data-topic="Digestive Problems">Digestive Problems</button>
+        <button class="topic-btn" data-topic="Eye Health">Eye Health</button>
+        <button class="topic-btn" data-topic="Irritable Bowel Syndrome (IBS)">Irritable Bowel Syndrome (IBS)</button>
+        <button class="topic-btn" data-topic="Lung Cancer">Lung Cancer</button>
+        <button class="topic-btn" data-topic="Nutrition And Healthy Eating">Nutrition And Healthy Eating</button>
+        <button class="topic-btn" data-topic="Pain Management">Pain Management</button>
+        <button class="topic-btn" data-topic="Skin Problems And Treatments">Skin Problems And Treatments</button>
+        <button class="topic-btn" data-topic="Vitamins And Supplements">Vitamins And Supplements</button>
+    </div>
+</section>
+
+<!-- Modal for Topic Details -->
+<div id="topicModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+    </div>
+</div>
+
