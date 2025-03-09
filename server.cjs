@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Serve static fronten
 
 // Linking the backend to the front end
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'Frontend.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Example of the API Endpoint
