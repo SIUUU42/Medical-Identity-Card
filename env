@@ -1,0 +1,3 @@
+MONGO_URI=mongodb+srv://mohit4learning:2VIqPllcyzaEHFK0@cluster0.fwekl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+JWT_SECRET=MySuperSecretKey123
+PORT=5000
